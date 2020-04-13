@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1586656078 source:c:\users\asus\documents\code\demosnake\main.cpp
+	<iostream>
+	<SDL.h>
+	<vector>
+	<string>
+	<SDL_ttf.h>
+	<ctime>
+
+1586566907 source:c:\users\asus\documents\code\demosnake - copy\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_ttf.h>
+	<vector>
+	<string>
+	<ctime>
+
