@@ -7,7 +7,7 @@
 	<SDL_ttf.h>
 	<ctime>
 
-1587046657 source:c:\users\asus\documents\code\demosnake - copy\main.cpp
+1587643059 source:c:\users\asus\documents\code\demosnake - copy\main.cpp
 	<iostream>
 	<SDL.h>
 	<vector>
@@ -16,12 +16,17 @@
 	<ctime>
 	"GameFinish.h"
 	"PlayerAndFood.h"
+	"Score.h"
 
-1587642741 c:\users\asus\documents\code\demosnake - copy\gamefinish.h
+1587643996 c:\users\asus\documents\code\demosnake - copy\gamefinish.h
 	<iostream>
 	<SDL.h>
 
 1587046657 c:\users\asus\documents\code\demosnake - copy\playerandfood.h
+	<iostream>
+	<SDL.h>
+
+1587643070 c:\users\asus\documents\code\demosnake - copy\score.h
 	<iostream>
 	<SDL.h>
 
