@@ -1,10 +1,10 @@
 #include <iostream>
 #include <SDL.h>
 void renderScore(SDL_Renderer* renderer, int tailLength, int scale, int wScale){
-	SDL_Color Black = { 255, 255, 255};
+	SDL_Color Black = { 255, 255, 255 };
 
 	TTF_Font* font = TTF_OpenFont((char*)"arial.ttf", 10);
-	if (font == NULL){
+	if (font == NULL) {
 		cout << "Font loading error" << endl;
 	}
 
