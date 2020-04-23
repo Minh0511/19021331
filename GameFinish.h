@@ -71,7 +71,7 @@ void gameOver(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, in
 	}
 
 	SDL_Surface* score = TTF_RenderText_Solid(font, (string("Score: ") + to_string(tailLength * 10)).c_str(), White);
-	SDL_Surface* gameover = TTF_RenderText_Solid(font, "Game Over", Red);
+	SDL_Surface* gameover = TTF_RenderText_Solid(font, "YOU DIED", Red);
 	SDL_Surface* retry = TTF_RenderText_Solid(font, "Press Enter to retry", White);
 	SDL_Texture* gameoverMessage = SDL_CreateTextureFromSurface(renderer, gameover);
 	SDL_Texture* retryMessage = SDL_CreateTextureFromSurface(renderer, retry);
