@@ -288,6 +288,7 @@ int main(int argc, char* argv[]){
 		renderFood(renderer, food);
 		renderPlayer(renderer, player, x, y, scale, tailX, tailY, tailLength);
 		renderScore(renderer, tailLength, scale, wScale);
+		renderName(renderer, scale, wScale);
 
 
 		SDL_RenderDrawLine(renderer, 0, 0, 0, 24 * 24);      //24*24 is the size of blocks
