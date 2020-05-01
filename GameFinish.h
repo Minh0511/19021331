@@ -42,7 +42,7 @@ void youWin(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, int 
 
 	TTF_CloseFont(font);
 
-	// Show victory screen while space has not been pressed
+	// Show victory screen while Enter has not been pressed
 	while (true){
 		SDL_RenderPresent(renderer);
 
@@ -98,7 +98,7 @@ void gameOver(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, in
 
 	TTF_CloseFont(font);
 
-	// Show game over screen while space has not been pressed
+	// Show game over screen while Enter has not been pressed
 	while (true){
 		SDL_RenderPresent(renderer);
 

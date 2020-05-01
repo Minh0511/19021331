@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include <ctime>
 #include "GameFinish.h"
 #include "PlayerAndFood.h"
@@ -84,6 +85,33 @@ int main(int argc, char* argv[]){
     Uint32 frameStart;
     int frameTime;
 
+    //background music
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1){
+        cout<<Mix_GetError<<endl;
+    }
+    Mix_Music *music = Mix_LoadMUS("nyancat.mp3");
+    {
+        if (music == NULL){
+            cout<<Mix_GetError<<endl;
+        }
+    }
+    Mix_PlayMusic(music, -1);
+
+    //GameOver sound
+    Mix_Music *die = Mix_LoadMUS("darksouls.mp3");
+    {
+        if (die == NULL){
+            cout<<Mix_GetError<<endl;
+        }
+    }
+
+    //Winning sound
+    Mix_Music *win = Mix_LoadMUS("win.mp3");
+    {
+        if (win == NULL){
+            cout<<Mix_GetError<<endl;
+        }
+    }
 
 	// Main game loop
 	while (true){
@@ -95,7 +123,7 @@ int main(int argc, char* argv[]){
             SDL_Delay(frameDelay - frameTime);
         }
 
-		float newTime = SDL_GetTicks()/50; // 50 is the speed of player, bigger number = slower speed
+		float newTime = SDL_GetTicks()/100; // 50 is the speed of player, bigger number = slower speed
 		float delta = newTime - time;
 		time = newTime;
 
@@ -173,7 +201,7 @@ int main(int argc, char* argv[]){
 			}
 		}
 
-		// Eat checking, has played collided with food?
+		// Eat checking, has player collided with food?
 		if (checkEat(food.x, food.y, x, y)){
 
 			// Spawn new food after it has been eaten
@@ -212,8 +240,11 @@ int main(int argc, char* argv[]){
 		}
 
 		//Win condition
-		if (tailLength == 576){
+		if (tailLength == 40){
+            Mix_HaltMusic();
+            Mix_PlayMusic(win, 1);
 			youWin(renderer, event, scale, wScale, tailLength);
+			Mix_PlayMusic(music, -1);
 			x = 0;
 			y = 0;
 			up = false;
@@ -238,7 +269,10 @@ int main(int argc, char* argv[]){
 		for (int i = 0; i < tailLength; i++){
 
 			if (x == tailX[i] && y == tailY[i]){
+                Mix_HaltMusic();
+                Mix_PlayMusic(die, 1);
 				gameOver(renderer, event, scale, wScale, tailLength);
+				Mix_PlayMusic(music, -1);
 				x = 0;
 				y = 0;
 				up = false;
@@ -262,7 +296,10 @@ int main(int argc, char* argv[]){
 
 		// Game over if player out of bounds, also resets the game state
 		if (x < 0 || y < 0 || x > scale * wScale - scale || y > scale * wScale - scale){
+            Mix_HaltMusic();
+            Mix_PlayMusic(die, 1);
 			gameOver(renderer, event, scale, wScale, tailLength);
+			Mix_PlayMusic(music, -1);
 			x = 0;
 			y = 0;
 			up = false;
@@ -305,6 +342,9 @@ int main(int argc, char* argv[]){
 	}
 
 	SDL_DestroyWindow(window);
+	Mix_Quit();
+	Mix_FreeMusic(music);
+	music = nullptr;
 	TTF_Quit();
 	SDL_Quit();
 	return 0;
