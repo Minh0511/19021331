@@ -113,6 +113,13 @@ int main(int argc, char* argv[]){
         }
     }
 
+    //moving sound
+    Mix_Chunk *go = Mix_LoadWAV("bruh.wav");
+    {
+        if (go == NULL){
+            cout<<Mix_GetError<<endl;
+        }
+    }
 	// Main game loop
 	while (true){
 
@@ -212,6 +219,7 @@ int main(int argc, char* argv[]){
 			if (food.x == -100 && food.y == -100){
 				redo = true;
 			}
+			Mix_PlayChannel(-1, go, 0);
 			tailLength++;
 		}
 
@@ -344,7 +352,9 @@ int main(int argc, char* argv[]){
 	SDL_DestroyWindow(window);
 	Mix_Quit();
 	Mix_FreeMusic(music);
+	Mix_FreeChunk(go);
 	music = nullptr;
+	go = nullptr;
 	TTF_Quit();
 	SDL_Quit();
 	return 0;
