@@ -89,7 +89,7 @@ int main(int argc, char* argv[]){
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1){
         cout<<Mix_GetError<<endl;
     }
-    Mix_Music *music = Mix_LoadMUS("nyancat.mp3");
+    Mix_Music *music = Mix_LoadMUS("cat.mp3");
     {
         if (music == NULL){
             cout<<Mix_GetError<<endl;
