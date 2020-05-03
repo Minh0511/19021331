@@ -33,8 +33,8 @@ void renderName(SDL_Renderer* renderer, int scale, int wScale){
 	SDL_Rect nameRect;
 	nameRect.w = 75;
 	nameRect.h = 20;
-	nameRect.x = ((scale*wScale) / 2) - (nameRect.w / 2) + 250;
-	nameRect.y = ((scale*wScale) / 2) - (nameRect.h / 2) + 270;
+	nameRect.x = ((scale*wScale) / 2) - (nameRect.w / 2) + 400;
+	nameRect.y = ((scale*wScale) / 2) - (nameRect.h / 2) + 425;
 	SDL_RenderCopy(renderer, nameMessage, NULL, &nameRect);
 
 	TTF_CloseFont(font);

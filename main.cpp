@@ -43,8 +43,8 @@ int main(int argc, char* argv[]){
 	vector<int> tailY;
 
 	// Size of tiles
-	int scale = 24;
-	int wScale = 24;
+	int scale = 30;
+	int wScale = 30;
 
 	// Player position variables
 	int x = 0;
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]){
             SDL_Delay(frameDelay - frameTime);
         }
 
-		float newTime = SDL_GetTicks()/100; // 50 is the speed of player, bigger number = slower speed
+		float newTime = SDL_GetTicks()/50; // 50 is the speed of player, bigger number = slower speed
 		float delta = newTime - time;
 		time = newTime;
 
@@ -216,7 +216,7 @@ int main(int argc, char* argv[]){
 		}
 
 		// Only runs in the frames where the player block has moved
-		if (delta * scale == 24){
+		if (delta * scale == 30){
 
 			// Update tail size and position
 			if (tailX.size() != tailLength){
@@ -328,10 +328,10 @@ int main(int argc, char* argv[]){
 		renderName(renderer, scale, wScale);
 
 
-		SDL_RenderDrawLine(renderer, 0, 0, 0, 24 * 24);      //24*24 is the size of blocks
-		SDL_RenderDrawLine(renderer, 0, 24*24, 24 * 24, 24 * 24);
-		SDL_RenderDrawLine(renderer, 24*24, 24 * 24, 24*24, 0);
-		SDL_RenderDrawLine(renderer, 24*24, 0, 0, 0);
+		SDL_RenderDrawLine(renderer, 0, 0, 0, 30 * 30);      //30 * 30 is the size of blocks
+		SDL_RenderDrawLine(renderer, 0, 30 * 30, 30 * 30, 30 * 30);
+		SDL_RenderDrawLine(renderer, 30 * 30, 30 * 30, 30 * 30, 0);
+		SDL_RenderDrawLine(renderer, 30 * 30, 0, 0, 0);
 
 		// Put everything on screen
 		SDL_RenderPresent(renderer);
