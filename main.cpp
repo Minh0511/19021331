@@ -125,12 +125,7 @@ int main(int argc, char* argv[]){
 
         frameStart = SDL_GetTicks();
 
-        frameTime = SDL_GetTicks() - frameStart;
-        if(frameDelay>frameTime){
-            SDL_Delay(frameDelay - frameTime);
-        }
-
-		float newTime = SDL_GetTicks()/50; // 50 is the speed of player, bigger number = slower speed
+		float newTime = SDL_GetTicks()/75; // 50 is the speed of player, bigger number = slower speed
 		float delta = newTime - time;
 		time = newTime;
 
@@ -203,7 +198,7 @@ int main(int argc, char* argv[]){
 			food.x = foodLoc.first;
 			food.y = foodLoc.second;
 
-			if (food.x == -100 && food.y == -100){
+			if (food.x == NULL && food.y == NULL){
 				redo = true;
 			}
 		}
@@ -216,7 +211,7 @@ int main(int argc, char* argv[]){
 			food.x = foodLoc.first;
 			food.y = foodLoc.second;
 
-			if (food.x == -100 && food.y == -100){
+			if (food.x == NULL && food.y == NULL){
 				redo = true;
 			}
 			Mix_PlayChannel(-1, go, 0);
@@ -265,7 +260,7 @@ int main(int argc, char* argv[]){
 			redo = false;
 			foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
 
-			if (food.x == -100 && food.y == -100){
+			if (food.x == NULL && food.y == NULL){
 				redo = true;
 			}
 
@@ -293,7 +288,7 @@ int main(int argc, char* argv[]){
 				redo = false;
 
 				foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
-				if (food.x == -100 && food.y == -100) {
+				if (food.x == NULL && food.y == NULL) {
 					redo = true;
 				}
 
@@ -322,7 +317,7 @@ int main(int argc, char* argv[]){
 			food.x = foodLoc.first;
 			food.y = foodLoc.second;
 
-			if (food.x == -100 && food.y == -100){
+			if (food.x == NULL && food.y == NULL){
 				redo = true;
 			}
 		}
@@ -347,6 +342,11 @@ int main(int argc, char* argv[]){
 		// Background
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 		SDL_RenderClear(renderer);
+
+		frameTime = SDL_GetTicks() - frameStart;
+            if(frameDelay>frameTime){
+                SDL_Delay(frameDelay - frameTime);
+            }
 	}
 
 	SDL_DestroyWindow(window);

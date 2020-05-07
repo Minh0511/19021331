@@ -1,3 +1,5 @@
+#ifndef SCORE_H
+#define SCORE_H
 #include <iostream>
 #include <SDL.h>
 void renderScore(SDL_Renderer* renderer, int tailLength, int scale, int wScale){
@@ -28,7 +30,7 @@ void renderName(SDL_Renderer* renderer, int scale, int wScale){
 		cout << "Font loading error" << endl;
 	}
 
-	SDL_Surface* name = TTF_RenderText_Solid(font, (string("by PVM ")).c_str(), White);
+	SDL_Surface* name = TTF_RenderText_Solid(font, (string("by PVM")).c_str(), White);
 	SDL_Texture* nameMessage = SDL_CreateTextureFromSurface(renderer, name);
 	SDL_Rect nameRect;
 	nameRect.w = 75;
@@ -39,3 +41,5 @@ void renderName(SDL_Renderer* renderer, int scale, int wScale){
 
 	TTF_CloseFont(font);
 }
+
+#endif // SCORE_H

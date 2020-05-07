@@ -1,3 +1,5 @@
+#ifndef GAMEFINISH_H
+#define GAMEFINISH_H
 #include<iostream>
 #include<SDL.h>
 using namespace std;
@@ -24,7 +26,7 @@ void youWin(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, int 
 	SDL_Rect retryRect;
 	SDL_Rect scoreRect;
 
-	scoreRect.h = 50;
+	scoreRect.h = 30;
 	scoreRect.w = 100;
 	scoreRect.x = ((scale*wScale)/2) - (scoreRect.w/2);
 	scoreRect.y = 0;
@@ -80,7 +82,7 @@ void gameOver(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, in
 	SDL_Rect retryRect;
 	SDL_Rect scoreRect;
 
-	scoreRect.h = 50;
+	scoreRect.h = 30;
 	scoreRect.w = 100;
 	scoreRect.x = ((scale*wScale)/2) - (scoreRect.w/2);
 	scoreRect.y = 0;
@@ -112,3 +114,5 @@ void gameOver(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, in
 		}
 	}
 }
+
+#endif // GAMEFINISH_H

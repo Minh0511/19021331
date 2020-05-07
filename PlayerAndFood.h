@@ -1,3 +1,5 @@
+#ifndef PLAYERANDFOOD_H
+#define PLAYERANDFOOD_H
 #include <iostream>
 #include <SDL.h>
 using namespace std;
@@ -13,10 +15,8 @@ void renderPlayer(SDL_Renderer* renderer, SDL_Rect player, int x, int y, int sca
 		player.y = tailY[i];
 		SDL_RenderFillRect(renderer, &player);
 	}
-
 	player.x = x;
 	player.y = y;
-
 	SDL_RenderFillRect(renderer, &player);
 }
 //Render food
@@ -41,9 +41,9 @@ pair<int, int> getFood(vector<int> tailX, vector<int> tailY, int playerX, int pl
 			valid = false;
 		}
 	}
-	if (!valid) {
+	if (valid == false) {
 		pair<int, int> foodLoc;
-		foodLoc = make_pair(-100, -100);
+		foodLoc = make_pair(NULL, NULL);
 		return foodLoc;
 	}
 
@@ -52,3 +52,4 @@ pair<int, int> getFood(vector<int> tailX, vector<int> tailY, int playerX, int pl
 	return foodLoc;
 }
 
+#endif // PLAYERANDFOOD_H
