@@ -4,10 +4,13 @@
 #include <string>
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
+#include <SDL_image.h>
 #include <ctime>
+#include <cstring>
 #include "GameFinish.h"
 #include "PlayerAndFood.h"
 #include "Score.h"
+#include "backGround.h"
 using namespace std;
 
 bool checkEat(int foodx, int foody, int playerx, int playery){
@@ -298,7 +301,7 @@ int main(int argc, char* argv[]){
 		}
 
 		// Game over if player out of bounds, also resets the game state
-		if (x < 0 || y < 0 || x > scale * wScale - scale || y > scale * wScale - scale){
+		if (x < 0 || y < 0 || x > scale * wScale - 1 || y > scale * wScale - 1 ){
             Mix_HaltMusic();
             Mix_PlayMusic(die, 1);
 			gameOver(renderer, event, scale, wScale, tailLength);
@@ -340,9 +343,10 @@ int main(int argc, char* argv[]){
 		SDL_RenderPresent(renderer);
 
 		// Background
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-		SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+        SDL_RenderClear(renderer);
 
+        //FPS limit
 		frameTime = SDL_GetTicks() - frameStart;
             if(frameDelay>frameTime){
                 SDL_Delay(frameDelay - frameTime);
@@ -353,8 +357,9 @@ int main(int argc, char* argv[]){
 	Mix_Quit();
 	Mix_FreeMusic(music);
 	Mix_FreeChunk(go);
-	music = nullptr;
-	go = nullptr;
+	music = NULL;
+	go = NULL;
+	image = NULL;
 	TTF_Quit();
 	SDL_Quit();
 	return 0;

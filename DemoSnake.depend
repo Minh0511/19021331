@@ -1,15 +1,18 @@
 # depslib dependency file v1.0
-1588846530 source:c:\users\asus\documents\code\demosnake\main.cpp
+1589182038 source:c:\users\asus\documents\code\demosnake\main.cpp
 	<iostream>
 	<SDL.h>
 	<vector>
 	<string>
 	<SDL_ttf.h>
 	<SDL_mixer.h>
+	<SDL_image.h>
 	<ctime>
+	<cstring>
 	"GameFinish.h"
 	"PlayerAndFood.h"
 	"Score.h"
+	"backGround.h"
 
 1587643059 source:c:\users\asus\documents\code\demosnake - copy\main.cpp
 	<iostream>
@@ -38,11 +41,16 @@
 	<iostream>
 	<SDL.h>
 
-1588853579 c:\users\asus\documents\code\demosnake\playerandfood.h
+1588856419 c:\users\asus\documents\code\demosnake\playerandfood.h
 	<iostream>
 	<SDL.h>
 
-1588852937 c:\users\asus\documents\code\demosnake\score.h
+1588941761 c:\users\asus\documents\code\demosnake\score.h
 	<iostream>
 	<SDL.h>
+
+1588999802 c:\users\asus\documents\code\demosnake\background.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
 
