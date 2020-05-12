@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1589182038 source:c:\users\asus\documents\code\demosnake\main.cpp
+1589258311 source:c:\users\asus\documents\code\demosnake\main.cpp
 	<iostream>
 	<SDL.h>
 	<vector>
@@ -12,7 +12,6 @@
 	"GameFinish.h"
 	"PlayerAndFood.h"
 	"Score.h"
-	"backGround.h"
 
 1587643059 source:c:\users\asus\documents\code\demosnake - copy\main.cpp
 	<iostream>

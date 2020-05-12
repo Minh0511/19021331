@@ -10,7 +10,6 @@
 #include "GameFinish.h"
 #include "PlayerAndFood.h"
 #include "Score.h"
-#include "backGround.h"
 using namespace std;
 
 bool checkEat(int foodx, int foody, int playerx, int playery){
@@ -61,9 +60,6 @@ int main(int argc, char* argv[]){
 	bool right = false;
 	bool left = false;
 
-	bool inputThisFrame = false;
-	bool redo = false;
-
 	// Food rectangle
 	SDL_Rect food;
 	food.w = scale;
@@ -74,6 +70,8 @@ int main(int argc, char* argv[]){
 	pair<int, int> foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
 	food.x = foodLoc.first;
 	food.y = foodLoc.second;
+
+    bool redo = false;
 
 	// Show the window with these settings and apply a renderer to it
 	window = SDL_CreateWindow("Snake", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, scale*wScale+1, scale*wScale+1, SDL_WINDOW_RESIZABLE);
@@ -132,8 +130,6 @@ int main(int argc, char* argv[]){
 		float delta = newTime - time;
 		time = newTime;
 
-		inputThisFrame = false;
-
 		// Controls
 		if (SDL_PollEvent(&event)){
 
@@ -143,7 +139,7 @@ int main(int argc, char* argv[]){
 			}
 
 			// If a key is pressed
-			if (event.type == SDL_KEYDOWN && inputThisFrame == false){
+			if (event.type == SDL_KEYDOWN ){
 
 				// Then check for the key being pressed and change direction accordingly
 				if (down == false && event.key.keysym.scancode == SDL_SCANCODE_UP){
@@ -151,28 +147,24 @@ int main(int argc, char* argv[]){
 					left = false;
 					right = false;
 					down = false;
-					inputThisFrame = true;
 				}
 				else if (right == false && event.key.keysym.scancode == SDL_SCANCODE_LEFT){
 					up = false;
 					left = true;
 					right = false;
 					down = false;
-					inputThisFrame = true;
 				}
 				else if (up == false && event.key.keysym.scancode == SDL_SCANCODE_DOWN){
 					up = false;
 					left = false;
 					right = false;
 					down = true;
-					inputThisFrame = true;
 				}
 				else if (left == false && event.key.keysym.scancode == SDL_SCANCODE_RIGHT){
 					up = false;
 					left = false;
 					right = true;
 					down = false;
-					inputThisFrame = true;
 				}
 			}
 		}
@@ -196,10 +188,10 @@ int main(int argc, char* argv[]){
 
 		if (redo == true){
 
-			redo = false;
-			foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
+            foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
 			food.x = foodLoc.first;
 			food.y = foodLoc.second;
+			redo = false;
 
 			if (food.x == NULL && food.y == NULL){
 				redo = true;
@@ -246,7 +238,7 @@ int main(int argc, char* argv[]){
 		}
 
 		//Win condition
-		if (tailLength == 40){
+		if (tailLength == 4){
             Mix_HaltMusic();
             Mix_PlayMusic(win, 1);
 			youWin(renderer, event, scale, wScale, tailLength);
@@ -260,15 +252,13 @@ int main(int argc, char* argv[]){
 			tailX.clear();
 			tailY.clear();
 			tailLength = 0;
-			redo = false;
 			foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
+			food.x = foodLoc.first;
+			food.y = foodLoc.second;
 
 			if (food.x == NULL && food.y == NULL){
 				redo = true;
 			}
-
-			food.x = foodLoc.first;
-			food.y = foodLoc.second;
 		}
 
         //GameOver condition
@@ -288,15 +278,12 @@ int main(int argc, char* argv[]){
 				tailX.clear();
 				tailY.clear();
 				tailLength = 0;
-				redo = false;
-
 				foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
+                food.x = foodLoc.first;
+                food.y = foodLoc.second;
 				if (food.x == NULL && food.y == NULL) {
 					redo = true;
 				}
-
-				food.x = foodLoc.first;
-				food.y = foodLoc.second;
 			}
 		}
 
@@ -315,11 +302,9 @@ int main(int argc, char* argv[]){
 			tailX.clear();
 			tailY.clear();
 			tailLength = 0;
-			redo = false;
 			foodLoc = getFood(tailX, tailY, x, y, scale, wScale, tailLength);
 			food.x = foodLoc.first;
 			food.y = foodLoc.second;
-
 			if (food.x == NULL && food.y == NULL){
 				redo = true;
 			}
@@ -359,7 +344,6 @@ int main(int argc, char* argv[]){
 	Mix_FreeChunk(go);
 	music = NULL;
 	go = NULL;
-	image = NULL;
 	TTF_Quit();
 	SDL_Quit();
 	return 0;
