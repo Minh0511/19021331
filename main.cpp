@@ -213,7 +213,6 @@ int main(int argc, char* argv[]){
 			tailLength++;
 		}
 
-		// Only runs in the frames where the player block has moved
 		if (delta * scale == 30){
 
 			// Update tail size and position
