@@ -4,7 +4,6 @@
 #include <string>
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
-#include <SDL_image.h>
 #include <ctime>
 #include <cstring>
 #include "GameFinish.h"
@@ -79,13 +78,6 @@ int main(int argc, char* argv[]){
 
 	float time = SDL_GetTicks() / 100;
 
-	//limit FPS
-	const int FPS = 60;
-    const int frameDelay = 1000/FPS;
-
-    Uint32 frameStart;
-    int frameTime;
-
     //background music
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1){
         cout<<Mix_GetError<<endl;
@@ -123,8 +115,6 @@ int main(int argc, char* argv[]){
     }
 	// Main game loop
 	while (true){
-
-        frameStart = SDL_GetTicks();
 
 		float newTime = SDL_GetTicks()/75; // 50 is the speed of player, bigger number = slower speed
 		float delta = newTime - time;
@@ -329,12 +319,6 @@ int main(int argc, char* argv[]){
 		// Background
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
         SDL_RenderClear(renderer);
-
-        //FPS limit
-		frameTime = SDL_GetTicks() - frameStart;
-            if(frameDelay>frameTime){
-                SDL_Delay(frameDelay - frameTime);
-            }
 	}
 
 	SDL_DestroyWindow(window);
