@@ -15,7 +15,7 @@ void renderScore(SDL_Renderer* renderer, int tailLength, int scale, int wScale){
 	SDL_Rect scoreRect;
 	scoreRect.w = 100;
 	scoreRect.h = 30;
-	scoreRect.x = ((scale*wScale) / 2) - (scoreRect.w / 2);
+	scoreRect.x = ((scale*wScale) / 2) - 50;
 	scoreRect.y = 0;
 	SDL_RenderCopy(renderer, scoreMessage, NULL, &scoreRect);
 
@@ -35,8 +35,8 @@ void renderName(SDL_Renderer* renderer, int scale, int wScale){
 	SDL_Rect nameRect;
 	nameRect.w = 75;
 	nameRect.h = 20;
-	nameRect.x = ((scale*wScale) / 2) - (nameRect.w / 2) + 400;
-	nameRect.y = ((scale*wScale) / 2) - (nameRect.h / 2) + 425;
+	nameRect.x = ((scale*wScale) / 2) + 360;
+	nameRect.y = ((scale*wScale) / 2) + 425;
 	SDL_RenderCopy(renderer, nameMessage, NULL, &nameRect);
 
 	TTF_CloseFont(font);
