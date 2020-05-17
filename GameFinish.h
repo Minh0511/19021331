@@ -28,16 +28,16 @@ void youWin(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, int 
 
 	scoreRect.h = 30;
 	scoreRect.w = 100;
-	scoreRect.x = ((scale*wScale)/2) - (scoreRect.w/2);
+	scoreRect.x = ((scale*wScale)/2) - 50;
 	scoreRect.y = 0;
 	gameoverRect.h = 200;
 	gameoverRect.w = 300;
-	gameoverRect.x = ((scale*wScale)/2) - (gameoverRect.w/2);
-	gameoverRect.y = ((scale*wScale)/2) - (gameoverRect.h/2) - 50;
+	gameoverRect.x = ((scale*wScale)/2) - 150;
+	gameoverRect.y = ((scale*wScale)/2) - 150;
 	retryRect.h = 100;
 	retryRect.w = 300;
-	retryRect.x = ((scale*wScale)/2) - ((retryRect.w/2));
-	retryRect.y = (((scale*wScale)/2) - ((retryRect.h/2)) + 150);
+	retryRect.x = ((scale*wScale)/2) - 150;
+	retryRect.y = ((scale*wScale)/2) + 100;
 	SDL_RenderCopy(renderer, gameoverMessage, NULL, &gameoverRect);
 	SDL_RenderCopy(renderer, retryMessage, NULL, &retryRect);
 	SDL_RenderCopy(renderer, scoreMessage, NULL, &scoreRect);
@@ -84,16 +84,16 @@ void gameOver(SDL_Renderer* renderer, SDL_Event event, int scale, int wScale, in
 
 	scoreRect.h = 30;
 	scoreRect.w = 100;
-	scoreRect.x = ((scale*wScale)/2) - (scoreRect.w/2);
+	scoreRect.x = ((scale*wScale)/2) - 50;
 	scoreRect.y = 0;
 	gameoverRect.h = 200;
 	gameoverRect.w = 300;
-	gameoverRect.x = ((scale*wScale)/2) - (gameoverRect.w/2);
-	gameoverRect.y = ((scale*wScale)/2) - (gameoverRect.h/2) - 50;
+	gameoverRect.x = ((scale*wScale)/2) - 150;
+	gameoverRect.y = ((scale*wScale)/2) - 150;
 	retryRect.h = 100;
 	retryRect.w = 300;
-	retryRect.x = ((scale*wScale)/2) - ((retryRect.w/2));
-	retryRect.y = (((scale*wScale)/2) - ((retryRect.h/2)) + 150);
+	retryRect.x = ((scale*wScale)/2) - 150;
+	retryRect.y = ((scale*wScale)/2) + 100;
 	SDL_RenderCopy(renderer, gameoverMessage, NULL, &gameoverRect);
 	SDL_RenderCopy(renderer, retryMessage, NULL, &retryRect);
 	SDL_RenderCopy(renderer, scoreMessage, NULL, &scoreRect);
